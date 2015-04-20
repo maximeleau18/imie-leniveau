@@ -3,8 +3,8 @@
 angular.module('leniveauApp', 
 	[
      	'ionic',
+     	'ngCookies',
      	'ngMockE2E',
-     	'ng-token-auth',
      	'leniveauApp.qrCode',
         'leniveauApp.manageErrors',
         'leniveauApp.login',
@@ -32,10 +32,10 @@ angular.module('leniveauApp',
 
 
 //Setting API's url globally
-.constant('apiUrl','mocks/')
+.constant('apiUrl','/api')
 
 //Configure the app
-.config(['$stateProvider', '$urlRouterProvider', '$authProvider', 'apiUrl', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $authProvider, apiUrl, $ionicConfigProvider) {
+.config(['$stateProvider', '$urlRouterProvider', 'apiUrl', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, apiUrl, $ionicConfigProvider) {
 
 	//Configure states
 	$stateProvider
@@ -67,13 +67,9 @@ angular.module('leniveauApp',
 		templateUrl: 'js/side-menu/sideMenu.html',
 		controller: 'SideMenuCtrl',
 		resolve: {
-			auth: ['$auth', '$state', function($auth, $state){
-				var promise = $auth.validateUser();
-				promise.catch(function(){
-					$state.go('auth.login');
-				});
-				return promise;
-			}]
+			auth: function(){
+				return true;
+			}
 		}
 	})
 	.state('logged.artisan', {
@@ -108,29 +104,6 @@ angular.module('leniveauApp',
 
 	//Redirect to home if wrong url entry point
 	$urlRouterProvider.otherwise('/qrcode/1');
-	
-	//Configure authentication
-	$authProvider.configure({
-        apiUrl:                  apiUrl,
-        tokenValidationPath:     '/auth/validate-token',
-        signOutUrl:              '/auth/sign-out',
-        emailRegistrationPath:   '/auth',
-        accountUpdatePath:       '/auth',
-        accountDeletePath:       '/auth',
-        confirmationSuccessUrl:  window.location.href,
-        passwordResetPath:       '/auth/password',
-        passwordUpdatePath:      '/auth/password',
-        passwordResetSuccessUrl: window.location.href,
-        emailSignInPath:         '/auth/sign-in',
-        storage:                 'localStorage',
-        tokenFormat: {
-          "access-token": "{{ token }}",
-          "token-type":   "Bearer",
-          "client":       "{{ clientId }}",
-          "expiry":       "{{ expiry }}",
-          "uid":          "{{ uid }}"
-        }
-    });
 	
 	//Set default view config
 	$ionicConfigProvider.tabs.position('bottom');

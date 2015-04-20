@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('leniveauApp.login', [])
-       .controller('LoginCtrl', ['$scope', '$auth', '$state', 'errorsService', function($scope, $auth, $state, errorsService) {
+       .controller('LoginCtrl', ['$scope', '$state', 'errorsService', '$cookies', 'apiUrl', function($scope, $state, errorsService, $cookies, apiUrl) {
 
-    $auth.validateUser();
-    
     $scope.loginForm = {
 		user_connect_email:'trimoreau.yonn@gmail.com',
 		user_connect_pwd1:'pvlyst'
 	};
-    
+    console.log(document.cookie);
 	$scope.sendLogin = function(loginForm){
 		var contentType ="application/x-www-form-urlencoded; charset=utf-8";
     	 
@@ -17,32 +15,30 @@ angular.module('leniveauApp.login', [])
     	    contentType = "text/plain";
     	 
 		 $.ajax({
-    	     url:"http://localhost:2010/Services/Connexion.ashx",
+    	     url:"/api/Services/Connexion.ashx",
     	     data:"user_connect_email="+loginForm.user_connect_email+"&user_connect_pwd1="+loginForm.user_connect_pwd1,
     	     type:"POST",
     	     dataType:"json",   
     	     contentType:contentType,    
     	     success:function(data)
     	     {
-				 //document.location.href="http://localhost:2010/Accueil.aspx"; 
-    	        //alert("Data from Server"+JSON.stringify(data));
+    	    	 if(data.Success == true){
+    	    		 var user = {
+        	    			 id:data.Object[0],
+        	    			 civility:data.Object[3],
+        	    			 firstname:data.Object[1],
+        	    			 lastname:data.Object[2]
+        	    	 };
+    	    		 localStorage.setItem("user", JSON.stringify(user));
+    	    	 }
+    	    	 else{
+    	    		 alert(data.Message);
+    	    	 }
     	     },
     	     error:function(jqXHR, textStatus, errorThrown)
     	     {
-    	        console.log(jqXHR);
+    	        alert("Problème de Cross Domain, n'oublie pas mon gars");
     	     }
     	});
     };
-	
-	
-    $scope.$on('auth:login-success', function(ev, user){
-        $state.go("logged.artisan");
-            
-        delete $scope.loginForm.email;
-        delete $scope.loginForm.password;
-    });
-    $scope.$on('auth:validation-success', function(ev, user){ $state.go("logged.artisan");});
-    
-    $scope.$on('auth:validation-error', function(ev, data){ errorsService.displayError("La connexion a échouée",data,401); });
-    $scope.$on('auth:login-error', function(ev, data){ errorsService.displayError("La connexion a échouée",data,401); });
 }]);

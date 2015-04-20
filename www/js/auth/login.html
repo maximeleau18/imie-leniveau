@@ -1,0 +1,18 @@
+<ion-view title="<img id='logo' src='images/signature.png'>" hide-back-button="true">
+    <ion-content padding="true" class="has-header">
+        <form name="login" ng-submit="login.$valid && sendLogin(loginForm)">
+            <ion-list>
+                <label class="item item-input">
+                    <input type="email" name="user_connect_email" placeholder="Email" ng-model="loginForm.user_connect_email" required>
+                </label>
+                <label class="item item-input">
+                    <input type="password" name="user_connect_pwd1" placeholder="Mot de passe" ng-model="loginForm.user_connect_pwd1" type="password" required>
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <input type="submit" class="button button-dark button-block" value="Se connecter">
+            <a ui-sref="auth.forgotpass" class="button button-positive button-clear button-block">Mot de passe oubli&eacute; ?</a>
+            <a ui-sref="auth.signup" class="button button-positive button-clear button-block">Cr&eacute;er un compte</a>
+        </form>
+    </ion-content>
+</ion-view>

@@ -16,7 +16,19 @@ input.ng-dirty.ng-invalid:not(:focus){
 
 /* Page artisan */
 
-#artisan .item-image>img{
+#artisan .item-body{
+	text-align:center;
+}
+
+#artisan .item-body h2{
+	text-align:left;
+}
+
+#artisan .item-body #avisLeNiveau{
+	text-align:left;
+}
+
+#artisan .item-body>img{
 	width:auto;
 	max-height:350px;
 }

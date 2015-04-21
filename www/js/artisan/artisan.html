@@ -2,12 +2,17 @@
 	<ion-content padding="true" scroll="true" class="has-header" id="artisan" ng-show="idArtisan !== undefined">
 	    <div class="list card">
 		  <div class="item item-avatar">
-		    <h2>{{artisan.name}}</h2>
-		    <p>{{artisan.activity}}</p>
-		    <p>{{artisan.address}}</p>
+		    <h2>{{artisan.nom}}</h2>
+		    <p>{{artisan.activite}}</p>
+		    <p>{{artisan.adresse}}</p> 
+		    <p>{{artisan.adresseComp}}</p>
+		    <p>{{artisan.codePostal}} {{artisan.ville}}</p>
+		    <a href={{artisan.urlSite}}>{{artisan.urlSite}}</a>
 		  </div>
-		  <div class="item item-image">
-		    <img src="images/imgArtisan.png">
+		  <div class="item item-body">
+		    <img class="full-image" src="{{artisan.pathLogo}}">
+		    <h2>Notre avis</h2>
+		    <p id="avisLeNiveau"></p>
 		  </div>
 		  <a class="item item-icon-left" ui-sref="logged.avis.commentaire">
 		    <i class="icon ion-compose"></i>
@@ -16,6 +21,6 @@
 		</div>
 	</ion-content>
 	<ion-content padding="true" class="has-header" ng-show="idArtisan === undefined">
-		<h3>Vous n'êtes pas pass&eacute; par le scan d'un QrCode pour arriver ici, veuillez y proc&eacute;der.</h2>
+		<!-- <h3>Vous n'êtes pas pass&eacute; par le scan d'un QrCode pour arriver ici, veuillez y proc&eacute;der.</h2> -->
 	</ion-content>
 </ion-view>

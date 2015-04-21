@@ -7,7 +7,7 @@ angular.module('leniveauApp.login', [])
 		user_connect_email:'trimoreau.yonn@gmail.com',
 		user_connect_pwd1:'pvlyst'
 	};
-    console.log(document.cookie);
+    //console.log(document.cookie);
 	$scope.sendLogin = function(loginForm){
 		var contentType ="application/x-www-form-urlencoded; charset=utf-8";
     	 
@@ -27,7 +27,8 @@ angular.module('leniveauApp.login', [])
         	    			 id:data.Object[0],
         	    			 civility:data.Object[3],
         	    			 firstname:data.Object[1],
-        	    			 lastname:data.Object[2]
+        	    			 lastname:data.Object[2],
+        	    			 fullname:data.Object[1]+' '+data.Object[2]
         	    	 };
     	    		 localStorage.setItem("user", JSON.stringify(user));
     	    		 $state.go('logged.artisan');

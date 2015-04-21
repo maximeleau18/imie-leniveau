@@ -1,10 +1,6 @@
 {
   "name": "imie-leniveau",
   "app_id": "",
-  "gulpStartupTasks": [
-    "sass",
-    "watch"
-  ],
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*"
@@ -12,7 +8,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://www.leniveau.fr"
+      "proxyUrl": "http://localhost:2010"
     }
   ]
 }

@@ -30,6 +30,7 @@ angular.module('leniveauApp.login', [])
         	    			 lastname:data.Object[2]
         	    	 };
     	    		 localStorage.setItem("user", JSON.stringify(user));
+    	    		 $state.go('logged.artisan');
     	    	 }
     	    	 else{
     	    		 alert(data.Message);
@@ -37,7 +38,7 @@ angular.module('leniveauApp.login', [])
     	     },
     	     error:function(jqXHR, textStatus, errorThrown)
     	     {
-    	        alert("Problème de Cross Domain, n'oublie pas mon gars");
+    	        alert("Problème de Cross Domain.");
     	     }
     	});
     };

@@ -36,7 +36,21 @@ angular.module('leniveauApp',
 
 //Configure the app
 .config(['$stateProvider', '$urlRouterProvider', 'apiUrl', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, apiUrl, $ionicConfigProvider) {
-
+	
+	function isLoggedUser(){
+		if(typeof(Storage)!== "undefined"){
+			// Le navigateur supporte le web storage
+			if (typeof(sessionStorage.getItem("user")) !== 'undefined' &&  sessionStorage.getItem("user") !== null){
+				return sessionStorage.getItem("user");
+			} else {
+				return null;
+			}
+		} else {
+			alert('Votre navigateur ne supporte pas le WebStorage.');
+			return "undefined";
+		}	
+	}		
+	
 	//Configure states
 	$stateProvider
 	.state('qrcode', {
@@ -47,19 +61,28 @@ angular.module('leniveauApp',
 		templateUrl: 'js/auth/auth.html'
 	})
 	.state('auth.login', {
-		url: '/login',
-		templateUrl: 'js/auth/login.html',
-		controller: 'LoginCtrl'
+		url: '/login',         
+	    controller: 'LoginCtrl',
+	    templateUrl: 'js/auth/login.html',
+		resolve: {
+			auth: isLoggedUser
+		}
 	})
 	.state('auth.signup', {
 		url: '/signup',
 		templateUrl: 'js/auth/signup.html',
-		controller: 'SignupCtrl'
+		controller: 'SignupCtrl',
+		resolve: {
+			auth: isLoggedUser
+		}
 	})
 	.state('auth.forgotpass', {
 		url: '/forgot-pass',
 		templateUrl: 'js/auth/forgotPass.html',
-		controller: 'ForgotPassCtrl'
+		controller: 'ForgotPassCtrl',
+		resolve: {
+			auth: isLoggedUser
+		}
 	})
 		//This is where security accessing logged pages happens
 	.state('logged', {
@@ -67,15 +90,16 @@ angular.module('leniveauApp',
 		templateUrl: 'js/side-menu/sideMenu.html',
 		controller: 'SideMenuCtrl',
 		resolve: {
-			auth: function(){
-				return true;
-			}
+			auth: isLoggedUser
 		}
 	})
 	.state('logged.artisan', {
 		url: '/artisan',
 		templateUrl: 'js/artisan/artisan.html',
-		controller: 'ArtisanCtrl'
+		controller: 'ArtisanCtrl',
+		resolve: {
+			auth: isLoggedUser
+		}
 	})
 	.state('logged.avis', {
       url: '/avis',
@@ -103,7 +127,7 @@ angular.module('leniveauApp',
     });
 
 	//Redirect to home if wrong url entry point
-	$urlRouterProvider.otherwise('/qrcode/1');
+	$urlRouterProvider.otherwise('/test');
 	
 	//Set default view config
 	$ionicConfigProvider.tabs.position('bottom');

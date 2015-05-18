@@ -33,7 +33,8 @@
 		</ion-content>
 		<div class="bar bar-footer bar-balanced has-tabs">
 		  <div class="title">
-		  	<button type="submit" class="button button-full button-dark" ng-click="submitAvis()">
+			<button class="button button-full button-dark not-valid" ng-if="!($root.title && $root.description)">Vous devez renseigner un titre et une description</button>
+		  	<button type="submit" ng-if="$root.title && $root.description" class="button button-full button-dark" ng-click="submitAvis()">
 		  		Publier l'avis
 			</button>
 		  </div>

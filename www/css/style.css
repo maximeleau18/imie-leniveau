@@ -82,6 +82,10 @@ input.ng-dirty.ng-invalid:not(:focus){
 	height:44px;
 }
 
+#details .bar-footer .title>button.not-valid{
+	background-color:#f33;
+}
+
 /*#details .bar-footer,#details .bar-footer .title,#details .bar-footer .title>button{
 	padding:0;
 	margin:0;

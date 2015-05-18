@@ -127,7 +127,7 @@ angular.module('leniveauApp',
     });
 
 	//Redirect to home if wrong url entry point
-	$urlRouterProvider.otherwise('/test');
+	$urlRouterProvider.otherwise('/qrcode/4');
 	
 	//Set default view config
 	$ionicConfigProvider.tabs.position('bottom');

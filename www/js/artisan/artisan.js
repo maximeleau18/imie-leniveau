@@ -8,12 +8,14 @@ angular.module('leniveauApp.artisan', [])
 			// L'utilisateur est bien connecté
 			var contentType ="application/x-www-form-urlencoded; charset=utf-8";
 
+			alert(window.localStorage.getItem("idArtisan"));
+			
 			if(window.XDomainRequest) //for IE8,IE9
 				contentType = "text/plain";
 			// On envoie la requête au serveur de façon à afficher le professionnel recherché
 			$.ajax({
 				url:"/api/Services/RecherchePro.ashx",
-				data:"action=searchpro"+"&q=4",
+				data:"action=searchpro"+"&q="+window.localStorage.getItem("idArtisan"),
 				type:"GET",
 				dataType:"json",   
 				contentType:contentType,    

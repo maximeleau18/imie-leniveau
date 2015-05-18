@@ -7,8 +7,6 @@ angular.module('leniveauApp.artisan', [])
 		if (auth !== null){
 			// L'utilisateur est bien connecté
 			var contentType ="application/x-www-form-urlencoded; charset=utf-8";
-
-			alert(window.localStorage.getItem("idArtisan"));
 			
 			if(window.XDomainRequest) //for IE8,IE9
 				contentType = "text/plain";

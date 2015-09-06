@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('leniveauApp.login', [])
-.controller('LoginCtrl', ['$scope', '$state', 'errorsService', '$cookies', 'apiUrl', 'auth', function($scope, $state, errorsService, $cookies, apiUrl, auth) {
+.controller('LoginCtrl', ['$scope', '$state', 'errorsService', '$cookies', 'apiUrl', function($scope, $state, errorsService, $cookies, apiUrl) {
 	
-	alert(auth);
-	
-	if (auth !== null){
-		location.replace("/#/artisan");
-	} else {
+//	alert(auth);
+//	
+//	if (auth !== null){
+//		location.replace("/#/artisan");
+//	} else {
 		location.replace("/#/login");
 			$scope.loginForm = {
 					user_connect_email:'trimoreau.yonn@gmail.com',
@@ -15,7 +15,7 @@ angular.module('leniveauApp.login', [])
 			};			
 			
 			$scope.sendLogin = function(loginForm){	
-				alert('user connexion');
+				//alert('user connexion');
 				var contentType ="application/x-www-form-urlencoded; charset=utf-8";
 
 				if(window.XDomainRequest) //for IE8,IE9
@@ -53,5 +53,5 @@ angular.module('leniveauApp.login', [])
 					}
 				});
 			};
-		}
+//		}
 }]);

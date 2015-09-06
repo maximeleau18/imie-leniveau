@@ -71,18 +71,12 @@ angular.module('leniveauApp',
 	.state('auth.signup', {
 		url: '/signup',
 		templateUrl: 'js/auth/signup.html',
-		controller: 'SignupCtrl',
-		resolve: {
-			auth: isLoggedUser
-		}
+		controller: 'SignupCtrl'
 	})
 	.state('auth.forgotpass', {
 		url: '/forgot-pass',
 		templateUrl: 'js/auth/forgotPass.html',
-		controller: 'ForgotPassCtrl',
-		resolve: {
-			auth: isLoggedUser
-		}
+		controller: 'ForgotPassCtrl'
 	})
 		//This is where security accessing logged pages happens
 	.state('logged', {
@@ -127,7 +121,7 @@ angular.module('leniveauApp',
     });
 
 	//Redirect to home if wrong url entry point
-	$urlRouterProvider.otherwise('/qrcode/4');
+	$urlRouterProvider.otherwise('/qrcode/9');
 	
 	//Set default view config
 	$ionicConfigProvider.tabs.position('bottom');

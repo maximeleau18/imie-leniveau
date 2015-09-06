@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('leniveauApp.sideMenu', [])
-.controller('SideMenuCtrl', ['$scope', '$state', 'errorsService', '$ionicSideMenuDelegate', 'auth', function($scope, $state, errorsService, $ionicSideMenuDelegate, auth) {
+.controller('SideMenuCtrl', ['$scope', '$state', 'errorsService', '$ionicSideMenuDelegate', function($scope, $state, errorsService, $ionicSideMenuDelegate) {
 
-	if(auth !== null){
+//	if(auth !== null){
 			var strUser = sessionStorage.getItem("user");
 			var user = {};
 			try {
@@ -14,7 +14,7 @@ angular.module('leniveauApp.sideMenu', [])
 				location.replace("/#/artisan");
 			}
 			$scope.user = user;
-		}
+//		}
 
 	$scope.toggleLeft = function() {
 		$ionicSideMenuDelegate.toggleLeft();

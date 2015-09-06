@@ -3,9 +3,8 @@
 angular.module('leniveauApp.artisan', [])
 .controller('ArtisanCtrl', ['$scope', '$state', 'apiUrl', '$http', 'errorsService', 'auth', function($scope, $state, apiUrl, $http, errorsService, auth) {
 
-		alert(auth);
-		if (auth !== null){
-			// L'utilisateur est bien connecté
+//		alert(auth);
+//		if (auth !== null){
 			var contentType ="application/x-www-form-urlencoded; charset=utf-8";
 			
 			if(window.XDomainRequest) //for IE8,IE9
@@ -50,9 +49,9 @@ angular.module('leniveauApp.artisan', [])
 					location.replace("/#/artisan");
 				}
 			});
-		} else {	
-			// L'utilisateur n'est pas connecté on redirige vers la page de login
-			alert('user null');
-			location.replace("/#/login");
-		}
+//		} else {	
+//			// L'utilisateur n'est pas connecté on redirige vers la page de login
+//			alert('user null');
+//			location.replace("/#/login");
+//		}
 }]);

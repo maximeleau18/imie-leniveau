@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry excluding="lib/" kind="src" path="www"/>
-	<classpathentry kind="output" path=""/>
-</classpath>

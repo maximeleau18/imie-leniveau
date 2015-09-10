@@ -2,15 +2,147 @@
     <ion-content padding="true" scroll="false" class="has-header">
         <form name="signup" ng-submit="signup.$valid && submitSignup(signupForm)" ng-init="signupForm = {}">
             <ion-list>
-                <label class="item item-input">
-                    <input type="text" placeholder="Nom" ng-model="signupForm.fullname" required>
+				<label class="item item-input">
+					<select ng-model="signupForm.user_typologie" required>
+                        <option value="">Vous êtes ?</option>
+                        <option value="1">Particulier</option>
+                        <option value="2">Entreprise</option>
+                        <option value="3">Collectivité</option>
+                        <option value="4">Association</option>
+                    </select>
+                </label>
+				<label class="item item-input">
+                    <input type="text" placeholder="Raison Sociale" ng-model="signupForm.user_raisonsociale">
+                </label>
+				<label class="item item-input">
+                    <select ng-model="signupForm.user_civ" required>
+						<option value="">Civilité ?</option>
+						<option value="Mr">Mr</option>
+                        <option value="Mme">Mme</option>
+                        <option value="Melle">Melle</option>
+                    </select>
                 </label>
                 <label class="item item-input">
-                    <input type="email" placeholder="Email" ng-model="signupForm.email" required>
+                    <input type="text" placeholder="Prénom" ng-model="signupForm.user_firstname" required>
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="Mot de passe" ng-model="signupForm.password" required>
+                    <input type="text" placeholder="Nom" ng-model="signupForm.user_lastname" required>
                 </label>
+                <label class="item item-input">
+                    <input type="file" ng-file="signupForm.files">
+                </label>
+				<label class="item item-input">
+                    <select ng-model="signupForm.user_departement" required>
+                        <option value="">Votre département ?</option>
+                        <option value="1">Ain</option>
+                        <option value="2">Aisne</option>
+                        <option value="3">Allier</option>
+                        <option value="4">Alpes de Haute Provence</option>
+                        <option value="5">Alpes (Hautes)</option>
+                        <option value="6">Alpes Maritimes</option>
+                        <option value="7">Ardéche</option>
+                        <option value="8">Ardennes</option>
+                        <option value="9"> Ariége</option>
+                        <option value="10">Aube</option>
+                        <option value="11">Aude</option>
+                        <option value="12">Aveyron</option>
+                        <option value="13">Bouches du Rhône</option>
+                        <option value="14">Calvados</option>
+                        <option value="15">Cantal</option>
+                        <option value="16">Charente</option>
+                        <option value="17">Charente Maritime</option>
+                        <option value="18">Cher</option>
+                        <option value="19">Corréze</option>
+                        <option value="21">Creuse</option>
+                        <option value="22">Dordogne</option>
+                        <option value="23">Doubs</option>
+                        <option value="24">Drôme</option>
+                        <option value="25">Eure</option>
+                        <option value="26">Eure et Loir</option>
+                        <option value="27">Finistére</option>
+                        <option value="28">Gard</option>
+                        <option value="29">Garonne (Haute)</option>
+                        <option value="30">Gers</option>
+                        <option value="31">Gironde</option>
+                        <option value="32">Hérault</option>
+                        <option value="33">Ille et Vilaine</option>
+                        <option value="34">Indre</option>
+                        <option value="35">Indre et Loire</option>
+                        <option value="36">Isére</option>
+                        <option value="37">Jura</option>
+                        <option value="38">Landes</option>
+                        <option value="39">Loir et Cher</option>
+                        <option value="40">Loire</option>
+                        <option value="41">Loire (Haute)</option>
+                        <option value="42">Loire Atlantique</option>
+                        <option value="43">Loiret</option>
+                        <option value="44">Lot</option>
+                        <option value="45">Lot et Garonne</option>
+                        <option value="46">Lozére</option>
+                        <option value="47">Maine et Loire</option>
+                        <option value="48">Manche</option>
+                        <option value="49">Marne</option>
+                        <option value="50">Marne (Haute)</option>
+                        <option value="51">Mayenne</option>
+                        <option value="52">Meurthe et Moselle</option>
+                        <option value="53">Meuse</option>
+                        <option value="54">Morbihan</option>
+                        <option value="55">Moselle</option>
+                        <option value="56">Niévre</option>
+                        <option value="57">Nord</option>
+                        <option value="58">Oise</option>
+                        <option value="59">Orne</option>
+                        <option value="60">Pas de Calais</option>
+                        <option value="61">Puy de Dôme</option>
+                        <option value="62">Pyrénées Atlantiques</option>
+                        <option value="63">Pyrénées (Hautes)</option>
+                        <option value="64">Pyrénées Orientales</option>
+                        <option value="65">Rhin (Bas)</option>
+                        <option value="66">Rhin (Haut)</option>
+                        <option value="67">Rhône</option>
+                        <option value="68">Saône (Haute)</option>
+                        <option value="69">Saône et Loire</option>
+                        <option value="70">Sarthe</option>
+                        <option value="71">Savoie</option>
+                        <option value="72">Savoie (Haute)</option>
+                        <option value="73">Paris</option>
+                        <option value="74">Seine Maritime</option>
+                        <option value="75">Seine et Marne</option>
+                        <option value="76">Yvelines</option>
+                        <option value="77">Sèvres (Deux)</option>
+                        <option value="78">Somme</option>
+                        <option value="79">Tarn</option>
+                        <option value="80">Tarn et Garonne</option>
+                        <option value="81">Var</option>
+                        <option value="82">Vaucluse</option>
+                        <option value="83">Vendée</option>
+                        <option value="84">Vienne</option>
+                        <option value="85">Vienne (Haute)</option>
+                        <option value="86">Vosges</option>
+                        <option value="87">Yonne</option>
+                        <option value="88">Belfort (Territoire de)</option>
+                        <option value="89">Essonne</option>
+                        <option value="90">Hauts de Seine</option>
+                        <option value="91">Seine Saint Denis</option>
+                        <option value="92">Val de Marne</option>
+                        <option value="98">Côte d'or</option>
+                        <option value="100">Côtes d'armor</option>
+                        <option value="102">Corse du sud</option>
+                        <option value="103">Haute corse</option>
+                        <option value="104">Val d'oise</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <input type="email" placeholder="Adresse mail" ng-model="signupForm.user_email" required>
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Mot de passe" ng-model="signupForm.user_password" required>
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Confirmer le mot de passe" ng-model="signupForm.user_password_confirmation" required>
+                </label>
+				<input checked="checked" type="checkbox" value="1" ng-model="signupForm.user_info">
+                                    Tenez-moi informé sur LeNiveau
             </ion-list>
             <input type="submit" class="button button-dark button-block" value="S'inscrire">
         </form>

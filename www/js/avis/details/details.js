@@ -25,8 +25,8 @@ angular.module('leniveauApp.avis')
     	var crit_CONS = $rootScope.conseil ? $rootScope.conseil : 1; 
     	var description = $rootScope.description;
     	
-    	console.log(HtmlEncode(description));
-    	alert("GEN="+ crit_GEN + " INT=" + crit_INT + " QPRIX=" + crit_QPRIX + " REL=" + crit_REL + " FIN=" + crit_FIN + " PROP=" + crit_PROP + " CONS=" + crit_CONS);
+    	//console.log(HtmlEncode(description));
+    	//alert("GEN="+ crit_GEN + " INT=" + crit_INT + " QPRIX=" + crit_QPRIX + " REL=" + crit_REL + " FIN=" + crit_FIN + " PROP=" + crit_PROP + " CONS=" + crit_CONS);
     	
     	try {
 			user = JSON.parse(sessionStorage.getItem("user"));
@@ -38,7 +38,7 @@ angular.module('leniveauApp.avis')
 				
 		idArtisan = window.localStorage.getItem("idArtisan");  	
 		    	
-		alert(user.id + "   " + idArtisan);
+		//alert(user.id + "   " + idArtisan);
 		
     	if(window.XDomainRequest) //for IE8,IE9
 			contentType = "text/plain";

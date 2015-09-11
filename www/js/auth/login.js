@@ -8,11 +8,11 @@ angular.module('leniveauApp.login', [])
 //	if (auth !== null){
 //		location.replace("/#/artisan");
 //	} else {
-		location.replace("/#/login");
-			$scope.loginForm = {
-					user_connect_email:'trimoreau.yonn@gmail.com',
-					user_connect_pwd1:'pvlyst'
-			};			
+//		location.replace("/#/login");
+//			$scope.loginForm = {
+//					user_connect_email:'trimoreau.yonn@gmail.com',
+//					user_connect_pwd1:'pvlyst'
+//			};			
 			
 			$scope.sendLogin = function(loginForm){	
 				//alert('user connexion');

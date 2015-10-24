@@ -4,12 +4,12 @@ angular.module('leniveauApp.avis')
        .controller('DetailsCtrl', ['$rootScope', '$scope', 'apiUrl', '$http', function($rootScope, $scope, apiUrl, $http) {
     
     if($rootScope.qualiteIntervention === undefined){
-    	$rootScope.qualiteIntervention = 1;
-    	$rootScope.qualitePrix = 1;
-    	$rootScope.relationClient = 1;
-    	$rootScope.qualiteFinitions = 1;
-    	$rootScope.propreteChantier = 1;
-    	$rootScope.conseil = 1;
+    	$rootScope.qualiteIntervention = 0;
+    	$rootScope.qualitePrix = 0;
+    	$rootScope.relationClient = 0;
+    	$rootScope.qualiteFinitions = 0;
+    	$rootScope.propreteChantier = 0;
+    	$rootScope.conseil = 0;
     }
     	   
     $scope.submitAvis = function(){

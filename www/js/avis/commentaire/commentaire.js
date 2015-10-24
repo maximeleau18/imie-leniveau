@@ -7,6 +7,6 @@ angular.module('leniveauApp.avis')
     	$rootScope.avis = {};
     	$rootScope.title = "";
     	$rootScope.description = "";
-    	$rootScope.rating = 1;
+    	$rootScope.rating = 0;
     }
 }]);
